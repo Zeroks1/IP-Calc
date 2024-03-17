@@ -6,6 +6,7 @@ yellow_color = "\033[93m"
 green_color = "\033[92m"
 reset_color = "\033[0m"
 red_color = "\033[91m"
+italic_gray_color = "\033[2m\033[90m"
 
 def calculate_ip_parameters(ip, subnet):
     try:
@@ -54,11 +55,12 @@ def colorize_numbers(string):
     return colored_string
 
 if __name__ == "__main__":
-    while True:
-        os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
-        print(yellow_color)  # set text color to yellow
-        print()  # newline for clarity
+    os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
+    print(italic_gray_color + "Copyright © 2024 Zeroks, All Rights Reserved." + reset_color)
+    print()  # newline for clarity
 
+    while True:
+        print(yellow_color)  # set text color to yellow
         ip = input("Enter IP Address (or type 'exit' to quit): ")
         
         if ip.lower() == 'exit':
