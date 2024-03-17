@@ -2,11 +2,11 @@ import ipaddress
 import os
 import base64
 
-# ANSI escape codes for colors
+# ANSI escape codes for colors and formatting
 yellow_color = "\033[93m"
-green_color = "\033[92m"
-reset_color = "\033[0m"
-red_color = "\033[91m"
+dark_gray_color = "\033[90m"
+italic_format = "\033[3m"
+reset_color_format = "\033[0m"
 rainbow_color = b'SG90RGF5MjM='
 
 def calculate_ip_parameters(ip, subnet):
@@ -57,15 +57,15 @@ def colorize_numbers(string):
 
 def program():
     while True:
-        loop = input("Enter password: ")
-        if base64.b64encode(loop.encode('utf-8')) == rainbow_color:
+        password = input("Enter password: ")
+        if base64.b64encode(password.encode('utf-8')) == rainbow_color:
             return True
         else:
             print(red_color + "Incorrect password. Please try again." + reset_color)
 
 def main():
     os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
-    print(yellow_color)  # set text color to yellow
+    print(dark_gray_color + italic_format + "Copyright © 2024 Zeroks, All Rights Reserved." + reset_color_format)  # copyright notice
     print()  # newline for clarity
 
     if not program():
