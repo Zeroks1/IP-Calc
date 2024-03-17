@@ -1,13 +1,11 @@
 import ipaddress
 import os
-import base64
 
 # ANSI escape codes for colors
 yellow_color = "\033[93m"
 green_color = "\033[92m"
 reset_color = "\033[0m"
 red_color = "\033[91m"
-rainbow_color = b'SG90RGF5MjM='
 
 def calculate_ip_parameters(ip, subnet):
     try:
@@ -55,24 +53,12 @@ def colorize_numbers(string):
             colored_string += char
     return colored_string
 
-def program():
+if __name__ == "__main__":
     while True:
-        loop = input("Enter password: ")
-        if base64.b64encode(loop.encode('utf-8')) == rainbow_color:
-            return True
-        else:
-            print(red_color + "Incorrect password. Please try again." + reset_color)
-
-def main():
-    os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
-    print(yellow_color)  # set text color to yellow
-    print()  # newline for clarity
-
-    if not program():
-        return
-
-    while True:
+        os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
         print(yellow_color)  # set text color to yellow
+        print()  # newline for clarity
+
         ip = input("Enter IP Address (or type 'exit' to quit): ")
         
         if ip.lower() == 'exit':
@@ -95,6 +81,3 @@ def main():
             print(f"{yellow_color}{key}:{reset_color} {value}")
 
         input(red_color + "Press Enter to continue..." + reset_color)
-
-if __name__ == "__main__":
-    main()
