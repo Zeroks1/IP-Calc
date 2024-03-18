@@ -7,6 +7,7 @@ green_color = "\033[92m"
 reset_color = "\033[0m"
 red_color = "\033[91m"
 italic_gray_color = "\033[2m\033[90m"
+dark_gray_color = "\033[90m"
 
 def calculate_ip_parameters(ip, subnet):
     try:
@@ -56,6 +57,7 @@ def colorize_numbers(string):
 
 if __name__ == "__main__":
     os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
+    print(italic_gray_color + "https://github.com/Zeroks1" + reset_color)
     print(italic_gray_color + "Copyright © 2024 Zeroks, All Rights Reserved." + reset_color)
     print()  # newline for clarity
 
