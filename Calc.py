@@ -71,6 +71,7 @@ if __name__ == "__main__":
         if not is_valid_ipv4(ip):
             print(red_color + "Invalid IP Address. Please enter a valid IPv4 address.")
             input("Press Enter to continue...")
+            os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
             continue
         
         subnet = int(input("Enter Subnet Mask (CIDR Notation, e.g., 24): "))
@@ -79,9 +80,11 @@ if __name__ == "__main__":
         if error_message:
             print(error_message)
             input(red_color + "Press Enter to continue..." + reset_color)
+            os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
             continue
 
         for key, value in parameters.items():
             print(f"{yellow_color}{key}:{reset_color} {value}")
 
         input(red_color + "Press Enter to continue..." + reset_color)
+        os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
