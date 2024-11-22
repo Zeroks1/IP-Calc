@@ -1,7 +1,6 @@
 import ipaddress
 import os
 
-# ANSI escape codes for colors
 yellow_color = "\033[93m"
 green_color = "\033[92m"
 reset_color = "\033[0m"
@@ -18,9 +17,8 @@ def calculate_ip_parameters(ip, subnet):
         first_host = network_address + 1
         last_host = broadcast_address - 1
 
-        # Calculate the number of available hosts
         subnet_bits = 32 - subnet
-        available_hosts = 2 ** subnet_bits - 2  # Subtracting network and broadcast addresses
+        available_hosts = 2 ** subnet_bits - 2
         
         parameters = {
             "IP Address": colorize_numbers(ip),
@@ -29,7 +27,7 @@ def calculate_ip_parameters(ip, subnet):
             "Broadcast Address": colorize_numbers(str(broadcast_address)),
             "First Host Address": colorize_numbers(str(first_host)),
             "Last Host Address": colorize_numbers(str(last_host)),
-            "Available Hosts": colorize_numbers(str(available_hosts))  # Colorize available hosts
+            "Available Hosts": colorize_numbers(str(available_hosts))
         }
 
         return None, parameters
@@ -56,13 +54,13 @@ def colorize_numbers(string):
     return colored_string
 
 if __name__ == "__main__":
-    os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
+    os.system('cls' if os.name == 'nt' else 'clear')
     print(italic_gray_color + "https://github.com/Zeroks1" + reset_color)
     print(italic_gray_color + "Copyright © 2024 Zeroks, All Rights Reserved." + reset_color)
-    print()  # newline for clarity
+    print()
 
     while True:
-        print(yellow_color)  # set text color to yellow
+        print(yellow_color)
         ip = input("Enter IP Address (or type 'exit' to quit): ")
         
         if ip.lower() == 'exit':
@@ -71,7 +69,7 @@ if __name__ == "__main__":
         if not is_valid_ipv4(ip):
             print(red_color + "Invalid IP Address. Please enter a valid IPv4 address.")
             input("Press Enter to continue...")
-            os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
+            os.system('cls' if os.name == 'nt' else 'clear')
             continue
         
         subnet = int(input("Enter Subnet Mask (CIDR Notation, e.g., 24): "))
@@ -80,11 +78,11 @@ if __name__ == "__main__":
         if error_message:
             print(error_message)
             input(red_color + "Press Enter to continue..." + reset_color)
-            os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
+            os.system('cls' if os.name == 'nt' else 'clear')
             continue
 
         for key, value in parameters.items():
             print(f"{yellow_color}{key}:{reset_color} {value}")
 
         input(red_color + "Press Enter to continue..." + reset_color)
-        os.system('cls' if os.name == 'nt' else 'clear')  # clear terminal screen
+        os.system('cls' if os.name == 'nt' else 'clear')
